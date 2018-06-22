@@ -1,33 +1,26 @@
 // possible words listed (more than 5, no cap)
-var wordList = ["gibson", "epiphone", "ibanez", "squier", "fender"];
+var wordList = ["dig dug", "galaga", "pac man", "space invaders", "donkey kong", "tetris"];
 
 var getRandomWord = function () {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
-// document.getElementById("startButton").addEventListener("click", startGame);
-
-
-// listen to start button, when it's hit start the game
-
-document.getElementById("startButton").addEventListener("click", startGame());
-
 function startGame() {
-    // document.getElementById("startButton");
 
     var word = getRandomWord();
-    console.log(word);
+
+    // console.log(word);
 
     var h3 = document.createElement("h3");
-    var div = document.getElementsById("game");
-    document.appendChild(h3);
 
-    // document.wordDisplayed.appendChild(div);
+    var node = document.createTextNode(word);
+    
+    h3.appendChild(node);
 
+    var element = document.getElementById("game");
 
-    //     var p = document.createElement("p");
-    // document.body.appendChild(p);
-    // console.log(word)
+    element.appendChild(h3);
+
 }
 
 
@@ -75,7 +68,5 @@ function startGame() {
     // shows incorrect answers AND takes a chance away (6 chances?)
 
     // if they answer correctly, gain a point
-
-// }
 
 // scoreboard showing points and remaining guesses
