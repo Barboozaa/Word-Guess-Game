@@ -5,11 +5,9 @@
 
   <meta charset="UTF-8">
 
-  <!-- !!! MAKE THE GAME WORK BEFORE YOU START WITH THE CSS !!! -->
+  <link rel="stylesheet" href="assets/css/reset.css">
 
-  <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
-
-  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <script type="text/javascript" src="assets/javascript/game.js"></script>
 
@@ -19,19 +17,25 @@
 
 <body>
     
-    <h1>Hangman</h1>
+    <h1>Arcade Hangman</h1>
 
-    <div id="startButtonContainer">
+    <div class="contentWrapper">
 
-      <button id="startButton" onclick="startGame()">Start</button>
+      <div id="game">
 
-    </div>
+        <h2 id="wordBox"></h2>
 
-    <div id="game">
+        <h3>Wins: </h3><h3 id="wins" class="numsOnPage"></h3>
 
-      <h3 id="wordBox"></h3>
+        <h3>Losses: </h3><h3 id="losses" class="numsOnPage"></h3>
 
-      <p id="incorrectGuesses"></p>
+        <h3>Guesses Remaining: </h3><h3 id="guesses" class="numsOnPage"></h3>
+
+        <p id="incorrectGuesses"></p>
+
+      </div>
+
+      <button id="startButton" onclick="startGame()">Insert Coin</button>
 
     </div>
 

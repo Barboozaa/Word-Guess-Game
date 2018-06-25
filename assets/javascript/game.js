@@ -1,97 +1,133 @@
-// possible words listed (more than 5, no cap)
-var wordList = ["dig dug", "galaga", "pac man", "space invaders", "donkey kong", "tetris"];
+// global vars and word list
+var wordList = ["digdug", "galaga", "pacman", "spaceinvaders", "donkeykong", "tetris"];
 
 var word = "";
 
-var lettersInWord = [];
+var wordSplit = [];
 
-var numBlanks = 0;
+var blanks = 0;
+
+var blanksGuessesMix = [];
 
 var incorrectGuesses = [];
 
+var userInput = "";
+
 var wins = 0;
+
 var losses = 0;
-var guesses = 6;
 
+var guesses = 9;
 
-function getRandomWord() {
-    return wordList[Math.floor(Math.random() * wordList.length)];
-};
-
-// EVERYTHING IS FUCKED! Refactor everything under here to work with the new gobal vars
-// Look at the word guess game in the New activities folder in the GTA repo
+// functions
 
 function startGame() {
 
-    document.getElementById("startButton").style.visibility = "hidden";
-    
-    var wordBlank = document.getElementById("wordBox");
+    // resets
+    blanksGuessesMix = [];
 
-    var node = document.createTextNode(getRandomWord());
-    
-    wordBlank.appendChild(node);
+    incorrectGuesses = [];
 
-    game();
+    guesses = 9;
 
-    function game() {
+    // grab word
+    word = wordList[Math.floor(Math.random() * wordList.length)];
 
-        var correctLetter = 0;
-    
-        document.onkeyup = function(event) {
-    
-            var userGuess = event.key;
-    
-            for (var i = 0; i < word.length; i++) {
-    
-                if (word[i] === userGuess) {
-        
-                    word[i].visibility = true; // this is more psuedocode than real right now
-        
-                    correctLetter++;
-        
-                }
-        
-            };
-        
-            if (correctLetter == 0) { // it's logging the incorrect letter until a correct letter is input
-                                        // I'm p sure correctLetter is getting incremented and not resetting (thanks Hunter)
-                var incorrectGuessList = document.getElementById("incorrectGuesses");
+    console.log(word);
 
-                var incorrectGuess = document.createTextNode(userGuess + ", ");
+    wordSplit = word.split("");
 
-                incorrectGuessList.appendChild(incorrectGuess);
-        
-            };
-        
-        };
-    
-        
-    
-    };
-    
+    blanks = wordSplit.length;
+
+    for (var i = 0; i < blanks; i++) {
+        blanksGuessesMix.push("_");
+    }
+
+    document.getElementById("guesses").innerHTML = guesses;
+
+    document.getElementById("wordBox").innerHTML = blanksGuessesMix.join(" ");
+
+    document.getElementById("incorrectGuesses").innerHTML = incorrectGuesses.join(" ");
+
 };
 
+function checkInput(input) {
 
+    var guessInWord = false;
 
+    for (var i = 0; i < blanks; i++) {
 
+        if (word[i] === input) {
 
-// document.onkeyup = function (event) {
+            guessInWord = true;
 
-//     var userInput = event.key;
+        }
 
-//     if (userInput === )
+    }
 
+    if (guessInWord) {
 
-// }
+        for (var x = 0; x < blanks; x++) {
 
+            if (word[x] === input) {
 
+                blanksGuessesMix[x] = input;
+            }
 
+        }
 
-    // random word chosen
-    // tracks input from keys
-    // shows correct guesses in the word
-    // shows incorrect answers AND takes a chance away (6 chances?)
+    }
 
-    // if they answer correctly, gain a point
+    else {
 
-// scoreboard showing points and remaining guesses
+        incorrectGuesses.push(input);
+
+        guesses--;
+
+    }
+
+    document.getElementById("guesses").innerHTML = guesses;
+
+    document.getElementById("wordBox").innerHTML = blanksGuessesMix.join(" ");
+
+    document.getElementById("incorrectGuesses").innerHTML = incorrectGuesses.join(" ");
+
+}
+
+function wordGuessedCorrectly() {
+
+    if (wordSplit.toString() === blanksGuessesMix.toString()) {
+
+        wins++;
+
+        alert("You win!");
+
+        document.getElementById("wins").innerHTML = wins;
+
+        startGame();
+    }
+
+    else if (guesses === 0) {
+
+        losses++;
+
+        alert("You lose");
+
+        document.getElementById("losses").innerHTML = losses;
+
+        startGame();
+
+    }
+
+}
+
+// game code
+
+document.onkeyup = function (event) {
+
+    userInput = String.fromCharCode(event.which).toLowerCase();
+
+    checkInput(userInput);
+
+    wordGuessedCorrectly();
+};
