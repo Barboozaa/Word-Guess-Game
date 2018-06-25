@@ -1,52 +1,55 @@
 // possible words listed (more than 5, no cap)
 var wordList = ["dig dug", "galaga", "pac man", "space invaders", "donkey kong", "tetris"];
 
-var getRandomWord = function () {
+function getRandomWord() {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 
 function startGame() {
 
+    document.getElementById("startButton").style.visibility = "hidden";
+    
     var word = getRandomWord();
 
-    // console.log(word);
-
-    var h3 = document.createElement("h3");
+    var wordBlank = document.getElementById("wordBox");
 
     var node = document.createTextNode(word);
     
-    h3.appendChild(node);
+    wordBlank.appendChild(node);
+    
+};
 
-    var element = document.getElementById("game");
+function game() {
 
-    element.appendChild(h3);
+    var correctLetter = 0;
 
-}
+    document.onkeyup = function(event) {
 
+        var userGuess = event.key;
 
-            // Creates a Function called "vowelChecker" that takes in a single argument (x).
-            // function vowelChecker(x) {
+        for (var i = 0; i < word.length; i++) {
 
-            //     // vowelChecker will grab the first letter (character)...
-            //     var firstChar = x.toLowerCase().charAt(0);
+            if (word[i] === userGuess) {
+    
+                word[i].visibility = true; // this is more psuedocode than real right now
+    
+                correctLetter++;
+    
+            }
+    
+        };
+    
+        if (correctLetter == 0) {
+    
+            // add input to incorrect guess list
+    
+        };
+    
+    };
 
-            //     // Then check if that first letter is a vowel.
-            //     if (firstChar === "a" || firstChar === "e" || firstChar === "i" || firstChar === "o" || firstChar === "u") {
+    
 
-            //         // If so... it will log that.
-            //         console.log("OMG. The first letter is a vowel!");
-
-            //     }
-
-            //     else {
-
-            //         // If not... it will log that.
-            //         console.log("First letter is NOT a vowel. *sadface*");
-
-            //     }
-            // }
-
-
+};
 
 
 
