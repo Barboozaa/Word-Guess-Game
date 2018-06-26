@@ -20,7 +20,7 @@ var losses = 0;
 var guesses = 9;
 
 // functions
-function startGame() {
+function roundStart() {
 
     // resets
     blanksGuessesMix = [];
@@ -99,33 +99,41 @@ function wordGuessedCorrectly() {
 
         wins++;
 
-        alert("You win!");
+        // alert("You win!");
 
         document.getElementById("wins").innerHTML = wins;
 
-        startGame();
+        setTimeout(startGame, 500);        
+        // startGame();
+
     }
 
     else if (guesses === 0) {
 
         losses++;
 
-        alert("You lose");
+        // alert("You lose");
 
         document.getElementById("losses").innerHTML = losses;
 
-        startGame();
+        setTimeout(startGame, 500);
+        // startGame();
 
     }
 
 }
 
 // game code
-document.onkeyup = function (event) {
+function startGame() {
 
-    userInput = event.key.toLowerCase();
+    roundStart();
 
-    checkInput(userInput);
+    document.onkeyup = function (event) {
 
-    wordGuessedCorrectly();
+        userInput = event.key.toLowerCase();
+
+        checkInput(userInput);
+
+        wordGuessedCorrectly();
+    };
 };

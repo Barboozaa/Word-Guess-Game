@@ -1,11 +1,66 @@
-/* .winContainer, .lossContainer, .guessContainer {
-    width: 300px;
+body {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-image: url("../images/bg01.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
-#wins, #losses, #guesses {
-    clear: right;
+.contentWrapper {
+    width: 65%;
+    background-color: black;
+    margin: 20px auto;
+    padding: 30px;
 }
 
-.numsOnPage {
+h1 {
+    margin: 35px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.winContainer {
+    float: left;
+}
+
+.lossContainer {
     float: right;
-} */
+}
+
+.guessContainer {
+    float: left;
+    clear: both;
+    margin-top: 20px;
+}
+
+#incorrectGuesses {
+    text-align: center;
+}
+
+#wordBox {
+    /* margin: 20px; */
+    text-align: center;
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 22px;
+}
+
+#game {
+    margin: 20px;
+}
+
+#startButton {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    cursor: pointer;
+    background-color: #ff9800;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
