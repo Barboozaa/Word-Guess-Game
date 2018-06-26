@@ -35,6 +35,8 @@ h1 {
 
 #incorrectGuesses {
     text-align: center;
+    position: relative;
+    top: 50px;
 }
 
 #wordBox {
