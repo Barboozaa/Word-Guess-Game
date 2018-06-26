@@ -5,7 +5,7 @@
 
   <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="assets/css/reset.css">
+  <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
 
   <link rel="stylesheet" href="assets/css/style.css">
 
@@ -16,28 +16,58 @@
 </head>
 
 <body>
-    
-    <h1>Arcade Hangman</h1>
 
-    <div class="contentWrapper">
+  <h1>Arcade Hangman</h1>
 
-      <div id="game">
+  <div class="contentWrapper">
 
-        <h2 id="wordBox"></h2>
+    <div id="game">
 
-        <h3>Wins: </h3><h3 id="wins" class="numsOnPage"></h3>
+      <!-- <div id="modal" class="modal">
 
-        <h3>Losses: </h3><h3 id="losses" class="numsOnPage"></h3>
+        <div class="modal-content">
 
-        <h3>Guesses Remaining: </h3><h3 id="guesses" class="numsOnPage"></h3>
+          <span class="close">&times;</span>
 
-        <p id="incorrectGuesses"></p>
+          <p>You Won!</p>
+
+        </div>
+
+      </div> -->
+
+      <h2 id="wordBox"></h2>
+
+      <div class="winContainer">
+
+        <h3>Wins: </h3>
+
+        <h3 id="wins" class="numsOnPage"></h3>
 
       </div>
 
-      <button id="startButton" onclick="startGame()">Insert Coin</button>
+      <div class="lossContainer">
+
+        <h3>Losses: </h3>
+
+        <h3 id="losses" class="numsOnPage"></h3>
+
+      </div>
+
+      <div class="guessContainer">
+
+        <h3>Guesses Remaining: </h3>
+
+        <h3 id="guesses" class="numsOnPage"></h3>
+
+      </div>
+
+      <p id="incorrectGuesses"></p>
 
     </div>
+
+    <button id="startButton" onclick="startGame()">Insert Coin</button>
+
+  </div>
 
 </body>
 

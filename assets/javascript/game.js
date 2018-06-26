@@ -20,7 +20,6 @@ var losses = 0;
 var guesses = 9;
 
 // functions
-
 function startGame() {
 
     // resets
@@ -122,10 +121,9 @@ function wordGuessedCorrectly() {
 }
 
 // game code
-
 document.onkeyup = function (event) {
 
-    userInput = String.fromCharCode(event.which).toLowerCase();
+    userInput = event.key.toLowerCase();
 
     checkInput(userInput);
 
